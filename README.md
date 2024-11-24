@@ -6,6 +6,8 @@ In this assignment, you will implement and analyze a simple neural network by vi
 
 ## Task Overview
 
+Link to Video: https://youtu.be/6CLp3lrrzyQ
+
 You are tasked to build and analyze a neural network from scratch with the following specifications:
 - **Architecture**: A Feedforward Neural Network with:
   - Input layer: Dimensionality of 2.
