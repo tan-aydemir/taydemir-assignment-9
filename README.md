@@ -1,92 +1,50 @@
-# Assignment 9: Neural Networks
+# Neural Networks: Understanding a Simple Feedforward Neural Network
 
----
+## Project Overview
 
-In this assignment, you will implement and analyze a simple neural network by visualizing its learned features, decision boundary, and gradients. The goal is to develop a deeper understanding of how a Feedforward Neural Network with one hidden layer operates and represents the input space during learning.
+In this project, I implemented and analyzed a simple Feedforward Neural Network (FNN) to better understand the inner workings of neural networks, particularly how they learn features, create decision boundaries, and optimize gradients. The focus was on developing a neural network from scratch, using a 2D dataset, and analyzing its behavior throughout the training process.
 
-## Task Overview
+## Key Features
 
-Link to Video: https://youtu.be/6CLp3lrrzyQ
+### 1. **Feedforward Neural Network Architecture**
+The neural network was built from scratch with the following architecture:
+- **Input Layer:** 2 input neurons corresponding to a 2D dataset.
+- **Hidden Layer:** A single hidden layer with 3 neurons.
+- **Output Layer:** A single neuron for binary classification (output value 0 or 1).
 
-You are tasked to build and analyze a neural network from scratch with the following specifications:
-- **Architecture**: A Feedforward Neural Network with:
-  - Input layer: Dimensionality of 2.
-  - Hidden layer: 1 hidden layer with 3 neurons.
-  - Output layer: Single output for binary classification.
-- **Dataset**: A randomly generated 2D dataset with two classes separated by a circular decision boundary.
-- **Activation function**: Use a non-linear activation function like ReLU, Sigmoid, or Tanh for the hidden layer.
-- **Loss function**: Cross-entropy loss.
-- **Optimizer**: Gradient Descent.
+### 2. **Activation Functions**
+The hidden layer used one of three non-linear activation functions: `tanh`, `relu`, or `sigmoid`. These activation functions enable the network to learn complex patterns and help with the backpropagation process:
+- **Tanh:** Hyperbolic tangent activation function.
+- **ReLU:** Rectified Linear Unit, used for sparsity and better gradient propagation.
+- **Sigmoid:** S-shaped curve, often used for binary classification tasks.
 
-You will then visualize and interpret the model’s behavior.
+### 3. **Loss Function and Optimizer**
+- **Loss Function:** I implemented the **cross-entropy loss** function, which is commonly used for binary classification problems.
+- **Optimizer:** The gradient descent algorithm was used to minimize the loss function by adjusting the model parameters (weights and biases) during backpropagation.
 
+### 4. **Dataset**
+A **randomly generated 2D dataset** was created with two classes, separated by a **circular decision boundary**. This allows for a clear visualization of the model’s decision boundary as it learns.
 
-## Part 0: Setup Environment
+### 5. **Training Process Visualization**
+The project emphasizes understanding the training process by visualizing the learned features, the decision boundary, and the gradients during training. The following visualizations were implemented:
+- **Learned Features in Hidden Space:** Visualized how the neural network learns to represent the input space in the hidden layer.
+- **Decision Boundary:** Plotted the decision boundary in the input space, showing how the neural network separates the two classes.
+- **Gradient Visualization:** Visualized the gradients, with edge thickness indicating the magnitude of the gradient, showing how the network adjusts during training.
+- **Animation:** An animation illustrating the entire training process, showing how the decision boundary evolves over time as the network learns.
 
-You can use the `Makefile` to install all dependencies. In your terminal, simply run:
+### 6. **Interactive Web Application**
 
-```bash
-make install
-```
+After implementing the neural network and training visualizations, the project was integrated into an **interactive Flask web application**. This allows users to experiment with various parameters and visually observe the network’s training process.
 
-This will automatically install the necessary packages listed in `requirements.txt`, including:
-
-- flask
-- numpy
-- scikit-learn
-- scipy
-- matplotlib
-
-## Part 1: Implementing Feedforward Neural Network and Visualization
-
-1. **Build the Feedforward Neural Network**: 
-   - Implement the Feedforward Neural Network from scratch with a forward function for forward propagation and a backward function for backpropagation. Implement three activation functions: 'tanh', 'relu', 'sigmoid'.
+#### **User Input:**
+- The user specifies the desired **activation function** (tanh, ReLU, or sigmoid).
+- The user also selects the number of **epochs** and **learning rate** for the training process.
   
-2. **Visualization**
-   - Implement the visualization code to plot 
-     - The learned features, distorted input space and decision hyperplane in the hidden space
-     - The decision boundary in the input space
-     - The gradients where the edge thickness visually represents the magnitude of the gradient.
-     - Create an animation illustrating the entire training process.
+#### **Interactive Module:**
+- Once the user inputs the parameters, they can click **"Train and Visualize"** to start the training process.
+- The resulting figures, including the decision boundary and gradient visualizations, are displayed dynamically.
 
-   Here's a basic example of the visualization. It's a simplified version, so feel free to enhance it.
-   ![til](example-output/visualize.gif)
-
-  
-
-## Part 2: Testing Your Code with a Static Input (Optional)
-
-1. If you prefer, you can also test the code locally by running the script directly and specifying necessary parameters. 
-
-2. Run the script in your terminal:
-   
-   python neural_networks.py
-
-3. Check the output in the `results` folder.
-
-## Part 3: Running the Interactive Module
-
-Once the environment is set up, you can start the Flask application by running:
-
+To run the Flask application locally, the user follows these steps:
 ```bash
-make run
-```
-
-This will start the Flask server and make the interactive application available locally at `http://127.0.0.1:3000`.
-
-1. Open your browser and go to `http://127.0.0.1:3000`.
-2. Choose the corresponding parameters and click "Train and Visualize". 
-3. The resulting figure will be displayed. It may take a while before the results show up.
-
-
-## Submission
-
-1. Create a Short Demo Video (1-2 minutes):
-   
-   - Create a demo video by screen recording your output with your voice-over.
-   - Explain any patterns you observe regarding the learned features, decision boundary and gradients.
-   - Compare the convergence behavior of the training process for different activation functions.
-
-2. Submit both your completed code and the demo video link.
-You can either embed the demo video in your portfolio website or just create an unlisted YouTube video with a link to that YT video in your assignment 9 github repo's readme.
-
+make install   # Installs necessary dependencies
+make run       # Starts the Flask application
